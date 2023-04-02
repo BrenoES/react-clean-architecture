@@ -1,21 +1,28 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "esnext",
     "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": ["DOM", "DOM.Iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "esnext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "traceResolution": true,
+    "baseUrl": "./",
+    "paths": {
+      "@data/*": ["src/data/*"],
+      "@domain/*": ["src/domain/*"]
+    },
+    "skipDefaultLibCheck": true
   },
-  "include": ["./src", "./@types"]
+  "include": ["src", "./@types"]
 }
