@@ -1,17 +1,20 @@
 import path from 'path'
+import { mergeConfig } from 'vite'
 
 import EnvironmentPlugin from 'vite-plugin-environment'
 import { defineConfig } from 'vitest/config'
-export default defineConfig({
-  plugins: [EnvironmentPlugin(['REACT_APP_TEXT'])],
+import viteConfig from './vite.config'
 
-  test: {
-    alias: {
-      '@data': path.resolve(__dirname, './src/data'),
-      '@domain': path.resolve(__dirname, './src/domain'),
+export default mergeConfig(
+  viteConfig,
+  defineConfig({
+    test: {
+      environment: 'jsdom',
+      globals: true,
+      setupFiles: ['./setupTests.ts'],
+      typecheck: {
+        tsconfig: './tsconfig.vitest.json',
+      },
     },
-    environment: 'jsdom',
-    globals: true,
-    setupFiles: ['./src/setupTests.ts'],
-  },
-})
+  })
+)

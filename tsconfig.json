@@ -17,10 +17,10 @@
     "jsx": "react-jsx",
     "types": ["vitest/globals"],
     "traceResolution": true,
-    "baseUrl": "./",
+    "baseUrl": "src",
     "paths": {
-      "@data/*": ["src/data/*"],
-      "@domain/*": ["src/domain/*"]
+      "@data/*": ["data/*"],
+      "@domain/*": ["domain/*"]
     },
     "skipDefaultLibCheck": true
   },

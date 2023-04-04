@@ -9,13 +9,13 @@ export default defineConfig({
   build: {
     sourcemap: true,
   },
-  plugins: [react(), EnvironmentPlugin(['REACT_APP_TEXT'])],
+  plugins: [react(), EnvironmentPlugin( 'all',{prefix:'REACT_APP'})],
   publicDir: 'public',
   resolve: {
-    alias: {
-      '@data': path.resolve(__dirname, './src/data'),
-      '@domain': path.resolve(__dirname, './src/domain'),
-    },
+    alias: [
+      {find:'@data', replacement: path.resolve(__dirname, './src/data')},
+      {find:'@domain',replacement: path.resolve(__dirname, './src/domain')},
+  ]
   },
   server: {
     host: true,

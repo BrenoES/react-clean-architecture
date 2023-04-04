@@ -1,15 +1,10 @@
 {
-    "extends": "./tsconfig.app.json",
-    "include": [
-      "vitest/**/*",
-    ],
-    "exclude": [],
-    "compilerOptions": {
-      "composite": true,
-      "lib": [],
-      "types": [
-        "node",
-        "jsdom"
-      ],
-    }
+  "extends": "./tsconfig.app.json",
+  "include": ["vitest/**/*","src/**/*.ts"],
+  "exclude": [],
+  "compilerOptions": {
+    "composite": true,
+    "lib": [],
+    "types": ["node", "jsdom"]
   }
+}
