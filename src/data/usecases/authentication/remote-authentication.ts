@@ -1,12 +1,7 @@
-import type { HttpPostClient } from '@data/protocols/http/http-post-client'
-import { HttpStatusCode } from '@data/protocols/http/http-response'
-import { InvalidCredentialError } from '@domain/error/invalid-credential'
-import { UnexpectedError } from '@domain/error/unexpected'
-import { AccountModel } from '@domain/models/account-model'
-import type {
-  Authentication,
-  AuthenticationParams,
-} from '@domain/usecases/authentication'
+import { HttpPostClient, HttpStatusCode } from "@data/protocols/http"
+import { InvalidCredentialError, UnexpectedError } from "@domain/error"
+import { AccountModel } from "@domain/models"
+import { AuthenticationParams, Authentication } from "@domain/usecases"
 
 type HttpPostClientAutentication = HttpPostClient<
   AuthenticationParams,
