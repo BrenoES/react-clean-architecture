@@ -5,7 +5,13 @@ import { Mocked, vi } from 'vitest'
 import { HttpPostParams } from '@data/protocols/http'
 
 vi.mock('axios')
+
+const mockedAxiosResult = {
+  status: faker.internet.httpStatusCode(),
+  data: faker.datatype.json(),
+}
 const mockedAxios = axios as Mocked<typeof axios>
+mockedAxios.post.mockResolvedValue(mockedAxiosResult)
 
 const makeSut = () => {
   return new AxiosHttpClient()
@@ -20,5 +26,13 @@ describe('AxiosHttpClient', () => {
     const sut = makeSut()
     await sut.post(request)
     expect(mockedAxios.post).toHaveBeenCalledWith(request.url, request.body)
+  })
+  test('should returns axios with correct response', async () => {
+    const sut = makeSut()
+   const httpResponse =  await sut.post(mockPostRequest())
+    expect(httpResponse).toEqual({
+      statusCode: mockedAxiosResult.status,
+      body: mockedAxiosResult.data,
+    })
   })
 })
