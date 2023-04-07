@@ -17,10 +17,11 @@
     "jsx": "react-jsx",
     "types": ["vitest/globals", "vite/client"],
     "traceResolution": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@data/*": ["data/*"],
-      "@domain/*": ["domain/*"]
+      "@data/*": ["src/data/*"],
+      "@domain/*": ["src/domain/*"],
+      "@infra/*": ["src/infra/*"]
     },
     "skipDefaultLibCheck": true
   },

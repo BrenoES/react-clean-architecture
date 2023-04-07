@@ -1,8 +1,9 @@
 {
   "extends": "./tsconfig.app.json",
-  "include": ["vitest/**/*","src/**/*.ts"],
+  "include": ["vitest/**/*","src/**/*{test}.ts"],
   "exclude": [],
   "compilerOptions": {
+    "baseUrl": ".",
     "composite": true,
     "lib": [],
     "types": ["node", "jsdom"]
