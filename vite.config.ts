@@ -16,6 +16,10 @@ export default defineConfig({
       { find: '@data', replacement: path.resolve(__dirname, './src/data') },
       { find: '@domain', replacement: path.resolve(__dirname, './src/domain') },
       { find: '@infra', replacement: path.resolve(__dirname, './src/infra') },
+      {
+        find: '@presentation',
+        replacement: path.resolve(__dirname, './src/presentation'),
+      },
     ],
   },
   server: {

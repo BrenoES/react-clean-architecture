@@ -1,0 +1,22 @@
+@import '../../styles/colors.scss';
+
+.header {
+  display: flex;
+  flex-direction: column;
+  background-color: $primary;
+  align-items: center;
+  border-top: 40px solid $primaryDark;
+  img {
+    height: 66px;
+    width: 112px;
+    mix-blend-mode: color-dodge;
+    object-fit: cover;
+    filter: invert(100%);
+    object-position: 0% 50%;
+    margin: 28px 0 0 0;
+  }
+  h1 {
+    color: $white;
+    margin: 0px 0px 40px;
+  }
+}

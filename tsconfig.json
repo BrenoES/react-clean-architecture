@@ -21,7 +21,8 @@
     "paths": {
       "@data/*": ["src/data/*"],
       "@domain/*": ["src/domain/*"],
-      "@infra/*": ["src/infra/*"]
+      "@infra/*": ["src/infra/*"],
+      "@presentation/*": ["src/presentation/*"]
     },
     "skipDefaultLibCheck": true
   },
