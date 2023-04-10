@@ -1,4 +1,4 @@
-import Logo from '@presentation/components/logo/logo'
+import Logo from '@presentation/components/logo'
 import styles from './login-header.module.scss'
 import React, { memo } from 'react'
 

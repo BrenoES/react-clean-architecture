@@ -1,4 +1,4 @@
-import SpinnerLoader from '@presentation/components/spinner-loader/spinner'
+import SpinnerLoader from '@presentation/components/spinner-loader'
 import styles from './input.module.scss'
 
 const FormStatus: React.FC = () => {
