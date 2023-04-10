@@ -1,11 +1,12 @@
 import React from 'react'
+import '@presentation/styles/global.scss'
 
-import { Login } from './presentation/pages'
+import { Router } from '@presentation/components'
 
 const App: React.FC = () => {
   return (
     <main className="App">
-      <Login></Login>
+      <Router />
     </main>
   )
 }

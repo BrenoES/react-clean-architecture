@@ -1,5 +1,5 @@
 import SpinnerLoader from '@presentation/components/spinner-loader'
-import styles from './input.module.scss'
+import styles from './form-status.module.scss'
 
 const FormStatus: React.FC = () => {
   return (
