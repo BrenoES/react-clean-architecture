@@ -8,4 +8,11 @@ describe('Login Component', () => {
     const errorWrap = getByTestId('error-wrap')
     expect(errorWrap.childElementCount).toBe(0)
   })
+  test('should start with initial state', async () => {
+    const { getByTestId } = await render(<Login />)
+    const errorWrap = getByTestId('error-wrap')
+    expect(errorWrap.childElementCount).toBe(0)
+    const subtmitButton = getByTestId('submit') as HTMLButtonElement
+    expect(subtmitButton.disabled).toBe(true)
+  })
 })
