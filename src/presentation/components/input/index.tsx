@@ -17,7 +17,7 @@ const Input: React.FC<Props> = (props: Props) => {
   }
 
   const getTitle = () => {
-    return error
+    return error || 'Tudo certo!'
   }
 
   const handleChange = (event: React.FocusEvent<HTMLInputElement>): void => {
