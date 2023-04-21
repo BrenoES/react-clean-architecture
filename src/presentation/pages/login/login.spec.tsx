@@ -2,21 +2,9 @@ import { faker } from '@faker-js/faker'
 import type { RenderResult } from '@testing-library/react'
 import { cleanup, fireEvent, render } from '@testing-library/react'
 
-import type { AccountModel } from '@domain/models'
-import { mockAccount } from '@domain/test'
-import type { Authentication, AuthenticationParams } from '@domain/usecases'
-import { ValidationStub } from '@presentation/test'
+import { AuthenticationSpy, ValidationStub } from '@presentation/test'
 
 import Login from '.'
-
-class AuthenticationSpy implements Authentication {
-  account = mockAccount()
-  params: AuthenticationParams
-  async auth(params: AuthenticationParams): Promise<AccountModel> {
-    this.params = params
-    return Promise.resolve(this.account)
-  }
-}
 
 type SutTypes = {
   sut: RenderResult
