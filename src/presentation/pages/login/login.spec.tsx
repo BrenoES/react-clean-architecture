@@ -2,12 +2,25 @@ import { faker } from '@faker-js/faker'
 import type { RenderResult } from '@testing-library/react'
 import { cleanup, fireEvent, render } from '@testing-library/react'
 
+import type { AccountModel } from '@domain/models'
+import { mockAccount } from '@domain/test'
+import type { Authentication, AuthenticationParams } from '@domain/usecases'
 import { ValidationStub } from '@presentation/test'
 
 import Login from '.'
 
+class AuthenticationSpy implements Authentication {
+  account = mockAccount()
+  params: AuthenticationParams
+  async auth(params: AuthenticationParams): Promise<AccountModel> {
+    this.params = params
+    return Promise.resolve(this.account)
+  }
+}
+
 type SutTypes = {
   sut: RenderResult
+  authenticationSpy: AuthenticationSpy
 }
 
 type SutParams = {
@@ -16,9 +29,13 @@ type SutParams = {
 
 const makeSut = (params?: SutParams): SutTypes => {
   const validationStub = new ValidationStub()
+  const authenticationSpy = new AuthenticationSpy()
   validationStub.errorMessage = params?.validationError
-  const sut = render(<Login validation={validationStub} />)
+  const sut = render(
+    <Login validation={validationStub} authentication={authenticationSpy} />
+  )
   return {
+    authenticationSpy,
     sut,
   }
 }
@@ -100,5 +117,24 @@ describe('Login Component', () => {
     fireEvent.click(subtmitButton)
     const spinner = sut.getByTestId('spinner')
     expect(spinner).toBeTruthy()
+  })
+
+  test('should call Authentication with correct values', async () => {
+    const { sut, authenticationSpy } = makeSut()
+    const emailInput = sut.getByTestId('email')
+    const email = faker.internet.email()
+    fireEvent.input(emailInput, { target: { value: email } })
+    const passwordInput = sut.getByTestId('password')
+    const password = faker.internet.password()
+    fireEvent.input(passwordInput, {
+      target: { value: password },
+    })
+    const subtmitButton = sut.getByTestId('submit')
+    fireEvent.click(subtmitButton)
+
+    expect(authenticationSpy.params).toEqual({
+      email,
+      password,
+    })
   })
 })
